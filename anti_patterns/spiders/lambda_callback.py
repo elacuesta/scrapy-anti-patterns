@@ -5,6 +5,11 @@ import scrapy
 class LambdaCallbackSpider(scrapy.Spider):
     name = 'lambda-callback'
     start_urls = ['https://example.org/']
+    custom_settings = {
+        'LOG_LEVEL': 'DEBUG',
+        'SCHEDULER_DEBUG': True,
+        'JOBDIR': 'lambda-callback-temp',
+    }
 
     def parse(self, response):
         data = [response.url]
